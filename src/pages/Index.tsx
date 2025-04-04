@@ -56,6 +56,7 @@ const Index = () => {
           title="Swap"
           color="doop-secondary"
           icon="🔄"
+          isEven={false}
           description={
             <p>Du bytter alle kortene dine med en spiller av ditt valg.</p>
           }
@@ -67,6 +68,7 @@ const Index = () => {
           color="doop-accent"
           icon="⬆️"
           lock={true}
+          isEven={true}
           description={
             <p>
               Du låser kortene dine og sier at du har høyeste poengsum. Dersom du ikke har høyest poengsum ved spillomgangens slutt, mister du et liv. 
@@ -82,6 +84,7 @@ const Index = () => {
           color="doop-accent"
           icon="⬇️"
           lock={true}
+          isEven={false}
           description={
             <p>
               Du låser kortene og sier du har laveste poengsum. Dersom du ender spillomgangen med det laveste poengsum av alle, vil den med nest laveste sum miste ett liv. 
@@ -97,6 +100,7 @@ const Index = () => {
           title="Trade One Card"
           color="doop-primary"
           icon="🔀"
+          isEven={true}
           description={
             <p>
               Velg en tilfeldig spiller. Gi spilleren først ett av dine kort, og trekk deretter ett av spillerens andre kort.
@@ -109,6 +113,7 @@ const Index = () => {
           title="Exchange All Cards"
           color="doop-primary"
           icon="♻️"
+          isEven={false}
           description={
             <p>
               Kast alle kortene dine ved siden av discard bunken, uten at tallverdiene vises, og trekk tre kort nye fra kortstokken.

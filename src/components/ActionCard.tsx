@@ -9,6 +9,7 @@ interface ActionCardProps {
   color: string;
   icon?: string;
   lock?: boolean;
+  isEven?: boolean;
 }
 
 const ActionCard = ({ 
@@ -17,11 +18,15 @@ const ActionCard = ({
   id, 
   color, 
   icon = "🃏", 
-  lock = false 
+  lock = false,
+  isEven = false
 }: ActionCardProps) => {
   return (
     <section id={id} className="mb-12 scroll-mt-20">
-      <div className="flex flex-col md:flex-row gap-8 items-start">
+      <div className={cn(
+        "flex flex-col md:flex-row gap-8 items-start",
+        isEven && "md:flex-row-reverse"
+      )}>
         <div className={cn(
           "action-card w-full md:w-1/3 lg:w-1/4 aspect-[3/4] flex flex-col",
           `bg-${color}/10`
