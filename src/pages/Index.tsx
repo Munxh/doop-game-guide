@@ -1,6 +1,7 @@
 
 import { Layout } from '@/components/Layout';
 import ActionCard from '@/components/ActionCard';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Index = () => {
   return (
@@ -19,32 +20,82 @@ const Index = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <div className="bg-white rounded-xl p-6 shadow-md">
-              <h3 className="text-xl font-semibold mb-2 text-doop-primary">Oppsett</h3>
-              <ul className="space-y-2">
-                <li><span className="font-medium">Antall spillere:</span> 3-6</li>
-                <li><span className="font-medium">Antall liv per spiller:</span> 3</li>
-                <li><span className="font-medium">Antall kort per spiller:</span> 3</li>
-                <li><span className="font-medium">Antall runder per omgang:</span> 3</li>
-                <li><span className="font-medium">Kortverdier:</span> 1-10 (0-9 i prototypen)</li>
-                <li><span className="font-medium">Tid:</span> 20-40 min</li>
+            <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
+              <h3 className="text-xl font-bold mb-4 text-doop-primary border-b pb-2">Oppsett</h3>
+              <ul className="space-y-3">
+                <li>
+                  <span className="font-bold text-doop-primary">Antall spillere:</span> 
+                  <span className="ml-2">3-6</span>
+                </li>
+                <li>
+                  <span className="font-bold text-doop-primary">Antall liv per spiller:</span> 
+                  <span className="ml-2">3</span>
+                </li>
+                <li>
+                  <span className="font-bold text-doop-primary">Antall kort per spiller:</span> 
+                  <span className="ml-2">3</span>
+                </li>
+                <li>
+                  <span className="font-bold text-doop-primary">Antall runder per omgang:</span> 
+                  <span className="ml-2">3</span>
+                </li>
+                <li>
+                  <span className="font-bold text-doop-primary">Kortverdier:</span> 
+                  <span className="ml-2">1-10 (0-9 i prototypen)</span>
+                </li>
+                <li>
+                  <span className="font-bold text-doop-primary">Tid:</span> 
+                  <span className="ml-2">20-40 min</span>
+                </li>
               </ul>
             </div>
             
-            <div className="bg-white rounded-xl p-6 shadow-md">
-              <h3 className="text-xl font-semibold mb-2 text-doop-primary">Kortene</h3>
-              <ul className="space-y-2">
-                <li><span className="font-medium">Poengkort:</span> 50 kort med verdier mellom 1 og 10</li>
-                <li><span className="font-medium">Actionkort:</span>
-                  <ul className="pl-5 mt-1 space-y-1">
-                    <li>Swap (2 stk)</li>
-                    <li>Highest</li>
-                    <li>Lowest</li>
-                    <li>Trade One Card</li>
-                    <li>Exchange All Cards</li>
+            <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
+              <h3 className="text-xl font-bold mb-4 text-doop-primary border-b pb-2">Kortene</h3>
+              
+              <Tabs defaultValue="poengkort" className="w-full">
+                <TabsList className="w-full mb-4 grid grid-cols-2">
+                  <TabsTrigger className="font-medium" value="poengkort">Poengkort</TabsTrigger>
+                  <TabsTrigger className="font-medium" value="actionkort">Actionkort</TabsTrigger>
+                </TabsList>
+                <TabsContent value="poengkort" className="p-3 bg-doop-light/30 rounded-md">
+                  <p className="font-medium">50 kort med verdier mellom 1 og 10</p>
+                  <div className="flex flex-wrap gap-2 mt-3">
+                    {[1,2,3,4,5,6,7,8,9,10].map(num => (
+                      <div key={num} className="w-8 h-10 bg-white border-2 border-doop-primary rounded flex items-center justify-center font-bold text-doop-primary">
+                        {num}
+                      </div>
+                    ))}
+                  </div>
+                </TabsContent>
+                <TabsContent value="actionkort" className="p-3 bg-doop-light/30 rounded-md">
+                  <ul className="space-y-2">
+                    <li className="flex items-center">
+                      <span className="inline-block w-6 h-6 bg-doop-secondary/20 rounded-full flex items-center justify-center text-doop-secondary mr-2">🔄</span>
+                      <span className="font-medium">Swap</span>
+                      <span className="ml-2 text-sm text-gray-500">(2 stk)</span>
+                    </li>
+                    <li className="flex items-center">
+                      <span className="inline-block w-6 h-6 bg-doop-accent/20 rounded-full flex items-center justify-center text-doop-accent mr-2">⬆️</span>
+                      <span className="font-medium">Highest</span>
+                      <span className="ml-1 text-lg">🔒</span>
+                    </li>
+                    <li className="flex items-center">
+                      <span className="inline-block w-6 h-6 bg-doop-accent/20 rounded-full flex items-center justify-center text-doop-accent mr-2">⬇️</span>
+                      <span className="font-medium">Lowest</span>
+                      <span className="ml-1 text-lg">🔒</span>
+                    </li>
+                    <li className="flex items-center">
+                      <span className="inline-block w-6 h-6 bg-doop-primary/20 rounded-full flex items-center justify-center text-doop-primary mr-2">🔀</span>
+                      <span className="font-medium">Trade One Card</span>
+                    </li>
+                    <li className="flex items-center">
+                      <span className="inline-block w-6 h-6 bg-doop-primary/20 rounded-full flex items-center justify-center text-doop-primary mr-2">♻️</span>
+                      <span className="font-medium">Exchange All Cards</span>
+                    </li>
                   </ul>
-                </li>
-              </ul>
+                </TabsContent>
+              </Tabs>
             </div>
           </div>
         </section>
